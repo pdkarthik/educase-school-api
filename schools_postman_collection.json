@@ -21,18 +21,34 @@
           "raw": "{\n  \"name\": \"Test School\",\n  \"address\": \"123 School Ave\",\n  \"latitude\": 12.9716,\n  \"longitude\": 77.5946\n}"
         },
         "url": {
-          "raw": "http://localhost:3000/addSchool",
-          "protocol": "http",
+          "raw": "https://educase-school-api-6o25.onrender.com/addSchool",
+          "protocol": "https",
           "host": [
-            "localhost"
+            "educase-school-api-6o25",
+            "onrender",
+            "com"
           ],
-          "port": "3000",
           "path": [
             "addSchool"
           ]
         }
       },
-      "response": []
+      "response": [
+        {
+          "name": "Success - School Added",
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"message\": \"School added successfully\",\n    \"schoolId\": 7\n}"
+        }
+      ]
     },
     {
       "name": "List Schools",
@@ -40,12 +56,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:3000/listSchools?latitude=12.9716&longitude=77.5946",
-          "protocol": "http",
+          "raw": "https://educase-school-api-6o25.onrender.com/listSchools?latitude=12.9716&longitude=77.5946",
+          "protocol": "https",
           "host": [
-            "localhost"
+            "educase-school-api-6o25",
+            "onrender",
+            "com"
           ],
-          "port": "3000",
           "path": [
             "listSchools"
           ],
@@ -61,7 +78,22 @@
           ]
         }
       },
-      "response": []
+      "response": [
+        {
+          "name": "Success - Returns Sorted List",
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": "json",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 7,\n        \"name\": \"Test School\",\n        \"address\": \"123 School Ave\",\n        \"latitude\": 12.971599578857422,\n        \"longitude\": 77.59459686279297,\n        \"distance\": 0.00034314991281567966\n    },\n    {\n        \"id\": 4,\n        \"name\": \"Bishop Cotton Boys\",\n        \"address\": \"St. Marks Road, Bangalore\",\n        \"latitude\": 12.97189998626709,\n        \"longitude\": 77.5989990234375,\n        \"distance\": 0.47783215271497\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Bombay Scottish School\",\n        \"address\": \"Mahim, Mumbai\",\n        \"latitude\": 19.033599853515625,\n        \"longitude\": 72.8396987915039,\n        \"distance\": 844.0084429269033\n    },\n    {\n        \"id\": 1,\n        \"name\": \"Delhi Public School\",\n        \"address\": \"Mathura Road, New Delhi\",\n        \"latitude\": 28.584299087524414,\n        \"longitude\": 77.24230194091797,\n        \"distance\": 1736.4358090679768\n    },\n    {\n        \"id\": 6,\n        \"name\": \"Hogwarts School\",\n        \"address\": \"Scottish Highlands\",\n        \"latitude\": 56.816898345947266,\n        \"longitude\": -4.182600021362305,\n        \"distance\": 8304.469570184616\n    }\n]"
+        }
+      ]
     }
   ]
 }

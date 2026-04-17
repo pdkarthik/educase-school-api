@@ -9,7 +9,8 @@ A streamlined, high-performance Node.js REST API for managing school location da
 
 ## Technical Approach
 - **Backend Architecture**: Built using `Express.js` for robust routing and fast request handling.
-- **Database**: `MySQL` is used for persistent data storage. Connections are managed through the `mysql2` promise-based client utilizing a connection pool for optimized query performance.
+- **Database**: `MySQL` is used for persistent data storage. Connections are managed through the `mysql2` promise-based client utilizing a connection pool for optimized query performance. The database automatically initializes missing tables upon connection.
+- **Cloud Infrastructure**: The live API is hosted securely on **Render** (`Node.js`), while the production MySQL database is hosted entirely on **Aiven**, ensuring a robust decoupling of the server and database services.
 - **Data Validation**: The `Zod` schema validation library is integrated to strictly validate incoming request payloads, preventing bad inserts or SQL errors.
 - **Geospatial Processing**: The mathematical **Haversine formula** is implemented directly in the Node.js application layer. This allows the system to compute the great-circle distance between two sets of coordinate points on a sphere (the Earth) with high accuracy without needing heavy GIS database extensions.
 
@@ -88,15 +89,20 @@ The server will boot up and establish a connection. You should see `Database con
   - `latitude`: User's current latitude (e.g., `28.5300`)
   - `longitude`: User's current longitude (e.g., `77.3915`)
 - **Example Request**:
-  `GET http://localhost:3000/listSchools?latitude=28.5300&longitude=77.3915`
+  `GET https://educase-school-api-6o25.onrender.com/listSchools?latitude=28.5300&longitude=77.3915`
 - **Response**: Returns a `200 OK` status with an array of school objects. Each object is augmented with a runtime `distance` metric (in kilometers) and the array is sorted meticulously in an ascending order (closest schools appear first).
 
 ---
 
 ## Testing via Postman
-A complete Postman Collection is included directly in the project directory (`schools_postman_collection.json`) for immediate testing capabilities.
+A complete, pre-configured Postman Collection is included directly in the project directory (`schools_postman_collection.json`). 
 
+This collection is permanently wired to the **live cloud deployment** (`educase-school-api-6o25.onrender.com`), meaning stakeholders can test the API instantly without running the server locally!
+
+**How to test:**
 1. Open Postman.
 2. Click **Import** in the top left corner.
-3. Select the `schools_postman_collection.json` file.
-4. Execute the predefined `Add School` and `List Schools` API endpoints right from your workspace.
+3. Select the `schools_postman_collection.json` file from this repository.
+4. Open the imported folder to find the `Add School` and `List Schools` requests.
+5. Click **Send** on either request to instantly test the live cloud database.
+6. *Bonus:* The collection includes embedded **Example Responses** demonstrating the successful DB outputs. Click the examples dropdown inside Postman to view the exact JSON structures!
