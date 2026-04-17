@@ -12,8 +12,22 @@ const pool = mysql.createPool({
   queueLimit: 0
 });
 pool.getConnection()
-  .then(connection => {
+  .then(async (connection) => {
     console.log('Database connected');
+    
+    // Auto-create the schools table if it doesn't exist
+    const createTableQuery = `
+      CREATE TABLE IF NOT EXISTS schools (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        address VARCHAR(255) NOT NULL,
+        latitude FLOAT NOT NULL,
+        longitude FLOAT NOT NULL
+      )
+    `;
+    await connection.execute(createTableQuery);
+    console.log('Schools table verified/created successfully.');
+    
     connection.release();
   })
   .catch(err => {
