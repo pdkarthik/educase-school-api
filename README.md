@@ -3,6 +3,14 @@
 ## Overview
 A streamlined, high-performance Node.js REST API for managing school location data. The system allows users to securely add schools with geographical coordinates and retrieve a dynamically sorted list of nearby schools based on user proximity.
 
+---
+
+## 🔗 Live Resources
+- **Base API URL:** `https://educase-school-api-6o25.onrender.com`
+- **Postman Collection:** [View & Test APIs Here](https://martian-flare-726487.postman.co/workspace/Team-Workspace~e07b6bba-1c9e-4d49-8bc6-2bd6f204560a/collection/43110364-957ca8fc-36a3-4697-aded-88522707a6c8?action=share&creator=43110364)
+
+---
+
 ## Key Features (User Point of View)
 - **Add New Schools**: Register a new school by providing its name, address, and geographical coordinates (latitude and longitude). The inputted data is validated immediately to ensure data integrity before it's saved.
 - **Find Nearby Schools**: By providing your current geographical location, the system calculates the exact distance between you and all registered schools, instantly returning a list perfectly sorted from the nearest school to the farthest.
