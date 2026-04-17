@@ -1,0 +1,22 @@
+{
+  "name": "educase-school-api",
+  "version": "1.0.0",
+  "description": "School Management REST API with spatial sorting",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "Backend Developer",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mysql2": "^3.22.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
