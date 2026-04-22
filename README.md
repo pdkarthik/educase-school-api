@@ -18,7 +18,7 @@ A streamlined, high-performance Node.js REST API for managing school location da
 ## Technical Approach
 - **Backend Architecture**: Built using `Express.js` for robust routing and fast request handling.
 - **Database**: `MySQL` is used for persistent data storage. Connections are managed through the `mysql2` promise-based client utilizing a connection pool for optimized query performance. The database automatically initializes missing tables upon connection.
-- **Cloud Infrastructure**: The live API is hosted securely on **Render** (`Node.js`), while the production MySQL database is hosted entirely on **Aiven**, ensuring a robust decoupling of the server and database services.
+- **Cloud Infrastructure**: The live API is hosted securely on **Render** (`Node.js`), while the production MySQL database is hosted entirely on **TiDB**, ensuring a robust decoupling of the server and database services.
 - **Data Validation**: The `Zod` schema validation library is integrated to strictly validate incoming request payloads, preventing bad inserts or SQL errors.
 - **Geospatial Processing**: The mathematical **Haversine formula** is implemented directly in the Node.js application layer. This allows the system to compute the great-circle distance between two sets of coordinate points on a sphere (the Earth) with high accuracy without needing heavy GIS database extensions.
 
