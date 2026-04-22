@@ -1,5 +1,5 @@
-const mysql = require('mysql2/promise');
-require('dotenv').config();
+const mysql = require("mysql2/promise");
+require("dotenv").config();
 
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
@@ -9,12 +9,17 @@ const pool = mysql.createPool({
   port: process.env.DB_PORT || 3306,
   waitForConnections: true,
   connectionLimit: 10,
-  queueLimit: 0
+  queueLimit: 0,
+  ssl: {
+    minVersion: "TLSv1.2",
+    rejectUnauthorized: true,
+  },
 });
-pool.getConnection()
+pool
+  .getConnection()
   .then(async (connection) => {
-    console.log('Database connected');
-    
+    console.log("Database connected");
+
     // Auto-create the schools table if it doesn't exist
     const createTableQuery = `
       CREATE TABLE IF NOT EXISTS schools (
@@ -26,12 +31,12 @@ pool.getConnection()
       )
     `;
     await connection.execute(createTableQuery);
-    console.log('Schools table verified/created successfully.');
-    
+    console.log("Schools table verified/created successfully.");
+
     connection.release();
   })
-  .catch(err => {
-    console.error('Database connection failed', err);
+  .catch((err) => {
+    console.error("Database connection failed", err);
   });
 
 module.exports = pool;
